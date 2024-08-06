@@ -15,6 +15,6 @@ setupRateLimit(app, ROUTES);
 setupAuth(app, ROUTES);
 setupProxies(app, ROUTES);
 
-app.listen(port, () => {
+app.listen(port, '127.0.0.1', () => {
     console.log(`server is listening to http://localhost:${port}`)
 })
