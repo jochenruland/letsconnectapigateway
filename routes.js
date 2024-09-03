@@ -1,30 +1,43 @@
 const ROUTES = [
     {
-        url: '/free',
+        url: '/api',
+        /*
         auth: false,
         creditCheck: false,
         rateLimit: {
             windowMs: 15 * 60 * 1000,
             max: 5
         },
+        */
         proxy: {
-            target: 'https://www.google.com',
-            changeOrigin: true,
+            target: 'http://127.0.0.1:5000/api',
+            changeOrigin: false,
+            logger: console,
+            secure: false,
             pathRewrite: {
-                [`^/free`]: '',
-            },
-        },
+                ['^/publishers']: '/publishers',
+            } 
+        }
+        
     },
     {
-        url: '/premium',
-        auth: true,
-        creditCheck: true,
+        url: '/api',
+        /*
+        auth: false,
+        creditCheck: false,
+        rateLimit: {
+            windowMs: 15 * 60 * 1000,
+            max: 5
+        },
+        */
         proxy: {
-            target: 'https://www.yahoo.com',
-            changeOrigin: true,
+            target: 'http://127.0.0.1:5000/api',
+            changeOrigin: false,
+            logger: console,
+            secure: false,
             pathRewrite: {
-                ['^/premium']: '',
-            }
+                ['^/publishers/:id']: '/publishers/:id',
+            } 
         }
     }
 ]
