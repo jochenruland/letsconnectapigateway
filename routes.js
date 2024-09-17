@@ -1,47 +1,13 @@
-const ROUTES = [
-    {
-        url: '/api',
-        /*
-        auth: false,
-        creditCheck: false,
-        rateLimit: {
-            windowMs: 15 * 60 * 1000,
-            max: 5
-        },
-        */
-        proxy: {
-            target: 'http://127.0.0.1:5000/api',
-            changeOrigin: false,
-            logger: console,
-            secure: false,
-            pathRewrite: {
-                ['^/publishers']: '/publishers',
-            } 
-        }
-        
-    },
-    {
-        url: '/api',
-        /*
-        auth: false,
-        creditCheck: false,
-        rateLimit: {
-            windowMs: 15 * 60 * 1000,
-            max: 5
-        },
-        */
-        proxy: {
-            target: 'http://127.0.0.1:5000/api',
-            changeOrigin: false,
-            logger: console,
-            secure: false,
-            pathRewrite: {
-                ['^/publishers/:id']: '/publishers/:id',
-            } 
-        }
-    }
-]
+const proxyTable = {
+    '127.0.0.1:8000/api/publishers': 'http://127.0.0.1:5000', // host only
+    '127.0.0.1:8000/api/affiliates': 'http://127.0.0.1:5001'
+  };
+  
+  const OPTIONS = {
+    target: 'http://127.0.0.1:5000',
+    router: proxyTable
+  };
 
 module.exports = {
-    ROUTES
+    OPTIONS
 }
